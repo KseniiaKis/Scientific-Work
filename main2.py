@@ -25,9 +25,9 @@ K = 1.0
 epsilon = 1.0
 t = 0
 
-for j in range(10):
-    K = j * 0.1
-    for i in range(10, 40):
+for j in range(21):
+    K = j * 0.2
+    for i in range(40, 101):
         tau = i * 0.1
         
         Omega = np.zeros(NN) 
@@ -65,6 +65,11 @@ for j in range(10):
         ZVec = np.zeros(len(Sol.t))
         for i in range(len(Sol.t)):
             ZVec[i] = np.abs(GlobalOrdPar(np.transpose(Sol.y)[i][:NN]))
+        
+        f3 = open(NameDir2+"/ZVec.txt", "w")
+        np.savetxt(NameDir2+"/ZVec.txt", ZVec)
+        np.save(NameDir2+"/ZVec", ZVec)
+        f3.close()
 
 
         fig = plt.figure(figsize=(7, 4))
